@@ -157,26 +157,6 @@ That sets manual fan mode around 40%.
 ipmitool raw 0x30 0x30 0x01 0x01
 ```
 
-## Secure Boot warning for GPU VMs
-
-If `nvidia-smi` fails after reboot and `modprobe nvidia` says:
-
-```text
-Key was rejected by service
-```
-
-then Secure Boot is blocking the NVIDIA kernel module. On Proxmox VMs with OVMF, this can happen when the EFI disk was created with pre-enrolled keys.
-
-Check inside the VM:
-
-```bash
-mokutil --sb-state
-dkms status
-sudo modprobe nvidia
-```
-
-If Secure Boot is enabled, either disable validation through MOK or recreate the VM EFI variable store without pre-enrolled keys.
-
 ## Important safety note
 
 This setup intentionally does not fall back to iDRAC automatic fan control when GPU data is stale. On systems where iDRAC does not see passed-through GPU temperatures, automatic fan control may be too slow or unaware of the GPU heat. Long stale data forces 100% instead.
