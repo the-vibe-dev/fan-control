@@ -1,0 +1,10 @@
+[Unit]
+Description=Run GPU-aware fan control every 10 seconds
+
+[Timer]
+OnBootSec=30s
+OnUnitActiveSec=10s
+Unit=gpu-fan-control.service
+
+[Install]
+WantedBy=timers.target

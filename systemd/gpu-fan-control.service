@@ -1,0 +1,8 @@
+[Unit]
+Description=GPU-aware Dell fan control from NAS bridge
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/gpu-fan-control.sh

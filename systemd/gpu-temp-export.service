@@ -1,0 +1,13 @@
+[Unit]
+Description=Export NVIDIA GPU temps to shared NAS bridge
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/gpu-temp-export.sh
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
